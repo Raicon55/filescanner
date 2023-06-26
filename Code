@@ -1,0 +1,32 @@
+import os
+
+def count_words(file_name):
+    word_counts = {}
+
+    # Check if the file exists and is accessible
+    if not os.path.isfile(file_name):
+        print("File not found or inaccessible.")
+        return word_counts
+
+    # Check if the file is a text file to mitigate potential malicious inputs
+    if not file_name.endswith('.txt'):
+        print("Invalid file format. Only text files (.txt) are supported.")
+        return word_counts
+
+    with open(file_name, 'r') as file:
+        # Read in the file contents as a string
+        text = file.read()
+
+        words = text.split()
+
+        for word in words:
+            if word in word_counts:
+                word_counts[word] += 1
+            else:
+                word_counts[word] = 1
+
+    return word_counts
+
+
+file_name = input('Enter file name: ')
+word_counts = count_words(file_name)
