@@ -1,2 +1,2 @@
-# filescanner
-File scanner
+# This is the final project file scanner
+
